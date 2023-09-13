@@ -12,6 +12,6 @@
 #include <fcntl.h>
 #include <errno.h>
 
-
+int main(void);
 
 #endif

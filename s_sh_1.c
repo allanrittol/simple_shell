@@ -3,7 +3,7 @@
 #include <string.h>
 #include <unistd.h>
 #include <sys/wait.h>
-
+#include "main.h"
 #define MAX_INPUT_SIZE 1024
 
 /**
