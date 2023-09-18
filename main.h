@@ -14,4 +14,9 @@
 
 int main(void);
 
+/*R/W buffers header files*/
+#define READ_BUF_SIZE 1024
+#define WRITE_BUF_SIZE 1024
+#define BUF_FLUSH -1
+
 #endif
