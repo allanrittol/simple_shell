@@ -12,6 +12,8 @@
 #include <fcntl.h>
 #include <errno.h>
 
+#define DELIMITER " \t\n"
+
 int print_numbers(void);
 char *read_input(void);
 int _strlen(char *str);
