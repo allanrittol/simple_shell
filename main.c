@@ -1,24 +1,32 @@
 #include "main.h"
+
 /**
  * main - main function for the simple shell
- * @ac: number of arguments
- * @av: arguments to be used
+ * @argc: number of arguments
+ * @argv: arguments to be used
  *
  * Return: (0) always if successful
  */
-int main(int ac, char **argv)
+
+int main(int argc, char **argv)
 {
-	char *line = NULL;
-	char **command = NULL;
-	int status;
-	(void) ac;
+	char *lineptr = NULL, **command = NULL;
+	int stat = 0;
+	(void) argc;
+	(void) argv;
 
 	while (1)
 	{
-		line = read_line();
+		lineptr = read_input();
+		if (lineptr == NULL)
+		{
+			if (isatty(STDIN_FILENO))
+				write(STDOUT_FILENO, "\n", 1);
+			return (stat);
+		}
 
-		command = tokenizer(line);
-
-		status = _execute(command, argv);
+		free(lineptr);
+		command = tokenizer(lineptr);
 	}
+
 }

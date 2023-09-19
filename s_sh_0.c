@@ -1,10 +1,10 @@
 #include "main.h"
 /**
- * main - entry point of the function that prints odd/even numbers
+ * print_numbers - entry point of the function that prints odd/even numbers
  *
  * Return: (0) if successful
  */
-int main(void)
+int print_numbers(void)
 {
 	int i;
 	pid_t ppid;

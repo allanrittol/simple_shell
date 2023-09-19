@@ -12,11 +12,12 @@
 #include <fcntl.h>
 #include <errno.h>
 
-int main(void);
-
-/*R/W buffers header files*/
-#define READ_BUF_SIZE 1024
-#define WRITE_BUF_SIZE 1024
-#define BUF_FLUSH -1
+int print_numbers(void);
+char *read_input(void);
+int _strlen(char *str);
+char *_strcpy(char *dest, char *src);
+int _strcmp(char *str1, char *str2);
+char *_strcat(char *dest, char *src);
+char *_strdup(const char *str);
 
 #endif
