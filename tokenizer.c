@@ -30,7 +30,7 @@ char **tokenizer(char *lineptr)
 
 	if (!command)
 	{
-		free(lineptr);
+		free(lineptr), line = NULL;
 		return (NULL);
 	}
 
