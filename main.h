@@ -25,8 +25,12 @@ char *_strcat(char *dest, char *src);
 char *_strdup(const char *str);
 char **tokenizer(char *lineptr);
 void freearray(char **array);
-int _implement(char **cmd, char **argv);
+int _implement(char **cmd, char **argv, int index);
 char *our_getenv(char *var);
+char *path_handler(char *cmd);
+void _perror(char *title, char *comd, int index);
+char *_iota(int i);
+void _reverse_string(char *stm, int span);
 
 
 #endif

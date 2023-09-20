@@ -11,7 +11,7 @@
 int main(int argc, char **argv)
 {
 	char *lineptr = NULL, **cmd = NULL;
-	int stat = 0;
+	int stat = 0, index = 0;
 	(void) argc;
 
 	while (1)
@@ -23,11 +23,12 @@ int main(int argc, char **argv)
 				write(STDOUT_FILENO, "\n", 1);
 			return (stat);
 		}
+		index++;
 		cmd = tokenizer(lineptr);
 		if (!cmd)
 			continue;
 
-		stat = _implement(cmd, argv);
+		stat = _implement(cmd, argv, index);
 	}
 }
 
