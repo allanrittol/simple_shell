@@ -31,6 +31,9 @@ char *path_handler(char *cmd);
 void _perror(char *title, char *comd, int index);
 char *_iota(int i);
 void _reverse_string(char *stm, int span);
-
+void builtin_handler(char **cmd, char **argv, int *stat, int index);
+void exit_shell(char **cmd, int *stat);
+void env_builtin(char **cmd, int *stat);
+int check_builtin(char *cmd);
 
 #endif
