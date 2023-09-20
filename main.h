@@ -26,6 +26,7 @@ char *_strdup(const char *str);
 char **tokenizer(char *lineptr);
 void freearray(char **array);
 int _implement(char **cmd, char **argv);
+char *our_getenv(char *var);
 
 
 #endif
