@@ -18,9 +18,9 @@ char *our_getenv(char *var)
 	char *k, *val, *env, *temp;
 	int n;
 
-	for (n = 0; envr[n]; n++)
+	for (n = 0; environ[n]; n++)
 	{
-		temp = _strdup(envr[n]);
+		temp = _strdup(environ[n]);
 		k = strtok(temp, "=");
 		if (_strcmp(k, var) == 0)
 		{
