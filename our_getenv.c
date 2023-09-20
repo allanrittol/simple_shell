@@ -10,7 +10,7 @@
 
 char *our_getenv(char *var)
 {
-	char *k, *val, *env;
+	char *k, *val, *env, temp;
 	int n;
 
 	for (n = 0; envr[n]; n++)
