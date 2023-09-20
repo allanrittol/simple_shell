@@ -10,7 +10,7 @@
 char **tokenizer(char *lineptr)
 {
 	char *token = NULL, *tmp;
-	char **command = NULL;
+	char **cmd = NULL;
 	int count = 0, i = 0;
 
 	if (!lineptr)
@@ -29,9 +29,9 @@ char **tokenizer(char *lineptr)
 		token = strtok(NULL, DELIMITER);
 	}
 	free(tmp);
-	command = malloc(sizeof(char *) * (count + 1));
+	cmd = malloc(sizeof(char *) * (count + 1));
 
-	if (!command)
+	if (!cmd)
 	{
 		free(lineptr), lineptr = NULL;
 		return (NULL);
@@ -39,13 +39,13 @@ char **tokenizer(char *lineptr)
 	token = strtok(lineptr, DELIMITER);
 	while (token)
 	{
-		command[i] = _strdup(token);
+		cmd[i] = _strdup(token);
 		token = strtok(NULL, DELIMITER);
 		i++;
 	}
 
 	free(lineptr), lineptr = NULL;
-	command[i] = NULL;
-	return (command);
+	cmd[i] = NULL;
+	return (cmd);
 }
 

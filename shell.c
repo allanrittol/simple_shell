@@ -10,10 +10,9 @@
 
 int main(int argc, char **argv)
 {
-	char *lineptr = NULL, **command = NULL;
-	int i, stat = 0;
+	char *lineptr = NULL, **cmd = NULL;
+	int stat = 0;
 	(void) argc;
-	(void) argv;
 
 	while (1)
 	{
@@ -24,15 +23,11 @@ int main(int argc, char **argv)
 				write(STDOUT_FILENO, "\n", 1);
 			return (stat);
 		}
-		command = tokenizer(lineptr);
-		if (!command)
+		cmd = tokenizer(lineptr);
+		if (!cmd)
 			continue;
-		for (i = 0; command[i]; i++)
-		{
-			printf("%s\n", command[i]);
-			free(command[i]), command[i] = NULL;
-		}
-		free(command), command = NULL;
-	}
 
+		stat = _implement(cmd, argv);
+	}
 }
+
