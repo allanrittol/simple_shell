@@ -10,10 +10,12 @@
 
 void _perror(char *title, char *comd, int index)
 {
-	char *i, message[] = ":not found\n";
+	char *i, *str = NULL, message[] = ":not found\n";
+	int length = 0;
 
 	i = _iota(index);
 
+	write(STDERR_FILENO, str, length);
 	write(STDERR_FILENO, title, _strlen(title));
 	write(STDERR_FILENO, ": ", 2);
 	write(STDERR_FILENO, i, _strlen(i));
