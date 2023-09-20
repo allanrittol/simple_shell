@@ -28,7 +28,7 @@ int  check_builtin(char *cmd)
  *
  * Return: nothing
  */
-void builtin_handler(char **cmd, char **argv, int stat, int index)
+void builtin_handler(char **cmd, char **argv, int *stat, int index)
 {
 	(void) argv;
 	(void) index;
@@ -45,10 +45,10 @@ void builtin_handler(char **cmd, char **argv, int stat, int index)
  *
  * Return: nothing
  */
-void exit_shell(char **cmd, int stat)
+void exit_shell(char **cmd, int *stat)
 {
 	freearray(cmd);
-	exit(stat);
+	exit(*stat);
 }
 
 /**
@@ -58,10 +58,9 @@ void exit_shell(char **cmd, int stat)
  *
  * Return: nothing
  */
-void env_builtin(char **cmd, int stat)
+void env_builtin(char **cmd, int *stat)
 {
 	int j;
-	(void) stat;
 
 	for (j = 0; environ[j]; j++)
 	{
@@ -69,5 +68,5 @@ void env_builtin(char **cmd, int stat)
 		write(STDOUT_FILENO, "\n", 1);
 	}
 	freearray(cmd);
-	stat = 0;
+	(*stat) = 0;
 }

@@ -29,7 +29,7 @@ int main(int argc, char **argv)
 			continue;
 
 		if (check_builtin(cmd[0]))
-			builtin_handler(cmd, argv, stat, index);
+			builtin_handler(cmd, argv, &stat, index);
 		else
 			stat = _implement(cmd, argv, index);
 	}
