@@ -35,5 +35,7 @@ void builtin_handler(char **cmd, char **argv, int *stat, int index);
 void exit_shell(char **cmd, char **argv, int *stat, int index);
 void env_builtin(char **cmd, int *stat);
 int check_builtin(char *cmd);
+int positive_num(char *stm);
+int _atoi(char *stm);
 
 #endif

@@ -43,10 +43,10 @@ void builtin_handler(char **cmd, char **argv, int *stat, int index)
  *
  * Return: nothing
  */
-void exit_shell(char **cmd, char *argv, int *stat, int index)
+void exit_shell(char **cmd, char **argv, int *stat, int index)
 {
-	int exit_val = (*status);
-	char i; message[] = ": exit: Illegal number:";
+	int exit_val = (*stat);
+	char *i, message[] = ": exit: Illegal number:";
 
 	if (cmd[1])
 	{
@@ -56,7 +56,7 @@ void exit_shell(char **cmd, char *argv, int *stat, int index)
 		}
 		else
 		{
-			i = _atoi(index);
+			i = _iota(index);
 			write(STDERR_FILENO, argv[0], _strlen(argv[0]));
 			write(STDERR_FILENO, ": ", 2);
 			write(STDERR_FILENO, i, _strlen(i));
