@@ -1,4 +1,5 @@
 #include "shell.h"
+
 /**
  * our_getenv - function gets the environment of a variabe
  * @var: variable name
@@ -10,7 +11,7 @@
 
 char *our_getenv(char *var)
 {
-	char *k, *val, *env, temp;
+	char *k, *val, *env, *temp;
 	int n;
 
 	for (n = 0; envr[n]; n++)
