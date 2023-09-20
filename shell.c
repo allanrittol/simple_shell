@@ -28,7 +28,10 @@ int main(int argc, char **argv)
 		if (!cmd)
 			continue;
 
-		stat = _implement(cmd, argv, index);
+		if (check_builtin(cmd[0]))
+			builtin_handler(cmd, argv, stat, index);
+		else
+			stat = _implement(cmd, argv, index);
 	}
 }
 
