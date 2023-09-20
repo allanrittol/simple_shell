@@ -17,35 +17,35 @@ char **tokenizer(char *lineptr)
 		return (NULL);
 	tmp = _strdup(lineptr);
 	token = strtok(tmp, DELIMITER);
-
+	if (token == NULL)
+	{
+		free(lineptr), lineptr = NULL;
+		free(tmp), tmp = NULL;
+		return (NULL);
+	}
 	while (token)
 	{
 		count++;
-		token = strtok(NULL, DELIMITER;)
+		token = strtok(NULL, DELIMITER);
 	}
-
 	free(tmp);
-
 	command = malloc(sizeof(char *) * (count + 1));
 
 	if (!command)
 	{
-		free(lineptr), line = NULL;
+		free(lineptr), lineptr = NULL;
 		return (NULL);
 	}
-
-	token = strtok(lineptr, DELIMETER);
-
+	token = strtok(lineptr, DELIMITER);
 	while (token)
 	{
-		command[i] = token;
-		token = strtok(NULL, DELIMETER);
+		command[i] = _strdup(token);
+		token = strtok(NULL, DELIMITER);
 		i++;
 	}
 
-	free(lineptr), line = NULL;
+	free(lineptr), lineptr = NULL;
 	command[i] = NULL;
 	return (command);
-
 }
 

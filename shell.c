@@ -11,7 +11,7 @@
 int main(int argc, char **argv)
 {
 	char *lineptr = NULL, **command = NULL;
-	int stat = 0;
+	int i, stat = 0;
 	(void) argc;
 	(void) argv;
 
@@ -24,9 +24,15 @@ int main(int argc, char **argv)
 				write(STDOUT_FILENO, "\n", 1);
 			return (stat);
 		}
-
-
 		command = tokenizer(lineptr);
+		if (!command)
+			continue;
+		for (i = 0; command[i]; i++)
+		{
+			printf("%s\n", command[i]);
+			free(command[i]), command[i] = NULL;
+		}
+		free(command), command = NULL;
 	}
 
 }
