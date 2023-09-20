@@ -1,4 +1,4 @@
-#include "shell.h"
+#include "main.h"
 /**
  * our_getenv - function gets the environment of a variabe
  * @var: variable name
