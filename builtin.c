@@ -31,7 +31,7 @@ int  check_builtin(char *cmd)
 void builtin_handler(char **cmd, char **argv, int *stat, int index)
 {
 	if (_strcmp(cmd[0], "exit") == 0)
-		exit_shell(cmd,argv, stat, index);
+		exit_shell(cmd, argv, stat, index);
 	else if (_strcmp(cmd[0], "env") == 0)
 		env_builtin(cmd, stat);
 }
@@ -40,6 +40,8 @@ void builtin_handler(char **cmd, char **argv, int *stat, int index)
  * exit_shell - function that exits the shell
  * @cmd: input string
  * @stat: shell status
+ * @argv: argument list
+ * @index: param index
  *
  * Return: nothing
  */
