@@ -48,7 +48,7 @@ void builtin_handler(char **cmd, char **argv, int *stat, int index)
 void exit_shell(char **cmd, char **argv, int *stat, int index)
 {
 	int exit_val = (*stat);
-	char *i, message[] = ": exit: Illegal number:";
+	char *i, message[] = ": exit: Illegal number: ";
 
 	if (cmd[1])
 	{
