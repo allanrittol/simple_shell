@@ -40,14 +40,17 @@ void print_error(const char *message)
 		perror("wrie");
 }
 
-/*
- * constr_env_var - function to construct an env variable string
- * @name: env var name
- * @value: value to assign to new env variable
+/**
+ * constr_env_var - function that constructs an env variable string
  *
- * Return: new env variable
+ * @name: environment variable name
+ * @value: value to assign to new environment variable
+ *
+ * Return: new string containg the environment variable,
+ *		NULL if memory allocation fails
+ * Description:  Constructs an environment variable string.
+ *.
  */
-
 char *constr_env_var(const char *name, const char *value)
 {
 	char *new_entry;

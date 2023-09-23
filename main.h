@@ -43,6 +43,6 @@ int unset_env_var(const char *name);
 int add_new_var(const char *name, const char *value);
 char *constr_env_var(const char *name, const char *value);
 void print_error(const char *message);
-int environ_size();
+int environ_size(void);
 
 #endif
