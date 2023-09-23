@@ -30,24 +30,21 @@ char *our_getenv(char *var)
 	return (NULL);
 }
 
-
 /**
  * print_error - function to print error message to STDERR
- * @message: the message to be printed
- *
+ * @message: error message to be printed.
  */
-
 void print_error(const char *message)
 {
-	if (write(STDERR_FILENO, message, _strlen(message)) == -1)
-		perror("write");
+	if (write(STDERR_FILENO, message, strlen(message)) == -1)
+		perror("wrie");
 }
 
-/**
+/*
  * constr_env_var - function to construct an env variable string
  * @name: env var name
  * @value: value to assign to new env variable
- * 
+ *
  * Return: new env variable
  */
 
@@ -55,17 +52,17 @@ char *constr_env_var(const char *name, const char *value)
 {
 	char *new_entry;
 
-	new_entry = malloc(_strlen(name) + _strlen(value) + 2);
+	new_entry = malloc(strlen(name) + strlen(value) + 2);
 	if (new_entry == NULL)
 	{
 		perror("malloc");
 		return (NULL);
 	}
-	_strcpy(new_entry, name);
-	_strcat(new_entry, "=");
-	_strcat(new_entry, value);
+	strcpy(new_entry, name);
+	strcat(new_entry, "=");
+	strcat(new_entry, value);
 
-	return (new_entry)
+	return (new_entry);
 }
 
 /**
@@ -80,12 +77,11 @@ char *constr_env_var(const char *name, const char *value)
 int set_env_var(const char *name, const char *value, int overwrite)
 {
 	int i = 0;
-	char *entry = environ[i], *new_entry, **new_var;
+	char *entry = environ[i], *new_entry;
 
 	for (i = 0; environ[i] != NULL; i++)
 	{
-		if (_strcmp(entry, name, _strlen(name)) == 0 &&
-				entry[_strlen(name)] == '=')
+		if (strcmp(entry, name) == 0 && entry[strlen(name)] == '=')
 		{
 			if (!overwrite)
 			{
@@ -99,21 +95,36 @@ int set_env_var(const char *name, const char *value, int overwrite)
 					return (-1);
 				free(environ[i]);
 				environ[i] = new_entry;
-
 				print_error("Overwriting environment variable\n");
-				if (write(STDERR_FILENO, new_entry, _strlen(new_entry)) == -1)
+				if (write(STDERR_FILENO, new_entry, strlen(new_entry)) == -1)
 					perror("write");
 				return (0);
 			}
 		}
 	}
+	return (add_new_var(name, value));
+}
+
+/**
+ * add_new_var - function that adds a new env variable
+ * @name: name of new env variable
+ * @value: value to assign to new variable
+ *
+ * Return: 0 on success, -1 on failure.
+ */
+
+int add_new_var(const char *name, const char *value)
+{
+	int i;
+	char **new_var, *new_entry;
+
 	new_var = malloc(sizeof(char *) * (environ_size() + 2));
 	if (new_var == NULL)
 	{
 		perror("malloc");
 		return (-1);
 	}
-	while(environ[i] != NULL)
+	while (environ[i] != NULL)
 	{
 		new_var[i] = environ[i];
 		i++;
@@ -121,13 +132,16 @@ int set_env_var(const char *name, const char *value, int overwrite)
 	new_entry = constr_env_var(name, value);
 	if (new_entry == NULL)
 		return (-1);
+
 	new_var[i] = new_entry;
 	new_var[i + 1] = NULL;
 	environ = new_var;
 
 	print_error("Setting new environment variable\n");
-	if (write(STDERR_FILENO, new_entry, _strlen(new_entry)) = -1)
+
+	if (write(STDERR_FILENO, new_entry, strlen(new_entry)) == -1)
 		perror("write");
+
 	return (0);
 }
 

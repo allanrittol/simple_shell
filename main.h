@@ -18,11 +18,13 @@ extern char **environ;
 
 int print_numbers(void);
 char *read_input(void);
+
 int _strlen(char *str);
 char *_strcpy(char *dest, char *src);
 int _strcmp(char *str1, char *str2);
 char *_strcat(char *dest, char *src);
 char *_strdup(const char *str);
+
 char **tokenizer(char *lineptr);
 void freearray(char **array);
 int _implement(char **cmd, char **argv, int index);
@@ -37,5 +39,10 @@ void env_builtin(char **cmd, int *stat);
 int check_builtin(char *cmd);
 int positive_num(char *stm);
 int _atoi(char *stm);
+int unset_env_var(const char *name);
+int add_new_var(const char *name, const char *value);
+char *constr_env_var(const char *name, const char *value);
+void print_error(const char *message);
+int environ_size();
 
 #endif
